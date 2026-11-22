@@ -1,0 +1,15 @@
+{
+  "name": "LocalPad",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "postCreateCommand": "npm ci",
+  "forwardPorts": [5173, 4173],
+  "portsAttributes": {
+    "5173": { "label": "Vite dev server", "onAutoForward": "openBrowser" },
+    "4173": { "label": "Vite preview (PWA/offline)", "onAutoForward": "notify" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["vitest.explorer"]
+    }
+  }
+}
