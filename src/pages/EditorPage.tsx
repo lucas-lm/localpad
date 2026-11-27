@@ -4,6 +4,7 @@ import { db, type Document } from '../lib/db';
 import { deleteDocument, getOrCreateDocument, saveDocumentContent } from '../lib/documents';
 import { Link, navigate, toUrl } from '../lib/router';
 import { useOnline } from '../lib/useOnline';
+import { useConfirm } from '../components/ConfirmDialog';
 import { ThemeToggle } from '../lib/theme';
 
 type SaveStatus = 'loading' | 'saved' | 'pending' | 'saving' | 'error';
@@ -25,6 +26,7 @@ export function EditorPage({ slug }: { slug: string }) {
   const [status, setStatus] = useState<SaveStatus>('loading');
   const [loadError, setLoadError] = useState<string | null>(null);
   const online = useOnline();
+  const [confirm, confirmDialog] = useConfirm();
 
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const docRef = useRef<Document | null>(null);
@@ -121,7 +123,15 @@ export function EditorPage({ slug }: { slug: string }) {
   const onDelete = async () => {
     const d = docRef.current;
     if (!d) return;
-    if (!window.confirm(`Delete "/${slug}"? This cannot be undone.`)) return;
+    const ok = await confirm({
+      title: 'Delete document?',
+      message: (
+        <>
+          <code>/{slug}</code> and everything in it will be permanently deleted. This can’t be undone.
+        </>
+      ),
+    });
+    if (!ok) return;
     window.clearTimeout(timerRef.current);
     docRef.current = null; // prevents a pending save from recreating the document
     await chainRef.current;
@@ -164,6 +174,7 @@ export function EditorPage({ slug }: { slug: string }) {
           aria-label={`Contents of /${slug}`}
         />
       )}
+      {confirmDialog}
     </div>
   );
 }
