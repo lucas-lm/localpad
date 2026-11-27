@@ -2,7 +2,8 @@ import { useCallback, useEffect, useRef, useState, type ChangeEvent } from 'reac
 import { useLiveQuery } from 'dexie-react-hooks';
 import { db, type Document } from '../lib/db';
 import { deleteDocument, getOrCreateDocument, saveDocumentContent } from '../lib/documents';
-import { Link, navigate, toUrl } from '../lib/router';
+import { Link, navigate } from '../lib/router';
+import { Logo } from '../components/Logo';
 import { useOnline } from '../lib/useOnline';
 import { useConfirm } from '../components/ConfirmDialog';
 import { ThemeToggle } from '../lib/theme';
@@ -143,7 +144,7 @@ export function EditorPage({ slug }: { slug: string }) {
     <div className="editor-page">
       <header className="topbar">
         <Link to="/" className="brand" title="All documents">
-          <img src={toUrl('/icons/icon.svg')} alt="" width="22" height="22" />
+          <Logo size={22} />
           <span className="brand-name">LocalPad</span>
         </Link>
         <span className="crumb" title={`/${slug}`}>/{slug}</span>

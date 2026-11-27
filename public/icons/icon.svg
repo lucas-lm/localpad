@@ -1,7 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="22" fill="#1f1e1c"/>
-  <rect x="26" y="20" width="48" height="60" rx="5" fill="#fbfaf7"/>
-  <rect x="34" y="36" width="32" height="4.5" rx="2" fill="#1f1e1c"/>
-  <rect x="34" y="48" width="32" height="4.5" rx="2" fill="#1f1e1c"/>
-  <rect x="34" y="60" width="21" height="4.5" rx="2" fill="#1f1e1c"/>
+  <style>
+    .ink { fill: #1f1e1c; }
+    .page { fill: #fbfaf7; }
+    @media (prefers-color-scheme: dark) {
+      .ink { fill: #e9e6e0; }
+      .page { fill: #1b1a18; }
+    }
+  </style>
+  <rect class="ink" width="100" height="100" rx="22"/>
+  <rect class="page" x="26" y="20" width="48" height="60" rx="5"/>
+  <rect class="ink" x="34" y="36" width="32" height="4.5" rx="2"/>
+  <rect class="ink" x="34" y="48" width="32" height="4.5" rx="2"/>
+  <rect class="ink" x="34" y="60" width="21" height="4.5" rx="2"/>
 </svg>
