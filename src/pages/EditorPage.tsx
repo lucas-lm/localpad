@@ -4,6 +4,7 @@ import { db, type Document } from '../lib/db';
 import { deleteDocument, getOrCreateDocument, saveDocumentContent } from '../lib/documents';
 import { Link, navigate, toUrl } from '../lib/router';
 import { useOnline } from '../lib/useOnline';
+import { ThemeToggle } from '../lib/theme';
 
 type SaveStatus = 'loading' | 'saved' | 'pending' | 'saving' | 'error';
 
@@ -142,6 +143,7 @@ export function EditorPage({ slug }: { slug: string }) {
             <span className="dot" aria-hidden="true" />
             <span className="save-label">{STATUS_LABEL[status]}</span>
           </span>
+          <ThemeToggle />
           <button className="btn btn-icon" onClick={onDelete} disabled={!doc} title="Delete document" aria-label="Delete document">
             <TrashIcon />
           </button>

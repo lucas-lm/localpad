@@ -6,6 +6,7 @@ import { preview, relativeTime } from '../lib/format';
 import { Link, navigate, toUrl } from '../lib/router';
 import { normalizeSlug, slugToPath } from '../lib/slug';
 import { useOnline } from '../lib/useOnline';
+import { ThemeToggle } from '../lib/theme';
 import type { Document } from '../lib/db';
 import { TrashIcon } from './EditorPage';
 
@@ -83,7 +84,10 @@ export function HomePage() {
           <img src={toUrl('/icons/icon.svg')} alt="" width="28" height="28" />
           <h1>LocalPad</h1>
         </div>
-        {!online && <span className="pill">Offline</span>}
+        <div className="topbar-right">
+          {!online && <span className="pill">Offline</span>}
+          <ThemeToggle />
+        </div>
       </header>
       <p className="tagline">Notes by URL, stored only in this browser.</p>
 

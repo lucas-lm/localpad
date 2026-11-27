@@ -1,7 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
+import { initTheme } from './lib/theme';
 import './styles.css';
+
+initTheme();
 
 // Ask the browser not to evict IndexedDB data under storage pressure.
 navigator.storage?.persist?.().catch(() => {});
