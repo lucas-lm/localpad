@@ -8,6 +8,12 @@
     <meta name="theme-color" content="#1b1a18" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <script>
+      try {
+        var t = localStorage.getItem('localpad:theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
     <title>LocalPad</title>
   </head>
   <body>
