@@ -3,7 +3,8 @@ import { useLiveQuery } from 'dexie-react-hooks';
 import { backupFileName, createBackup, importDocuments, parseBackup } from '../lib/backup';
 import { deleteDocument, listDocuments } from '../lib/documents';
 import { preview, relativeTime } from '../lib/format';
-import { Link, navigate, toUrl } from '../lib/router';
+import { Link, navigate } from '../lib/router';
+import { Logo } from '../components/Logo';
 import { normalizeSlug, slugToPath } from '../lib/slug';
 import { useOnline } from '../lib/useOnline';
 import { useConfirm } from '../components/ConfirmDialog';
@@ -91,7 +92,7 @@ export function HomePage() {
     <div className="home">
       <header className="home-header">
         <div className="brand">
-          <img src={toUrl('/icons/icon.svg')} alt="" width="28" height="28" />
+          <Logo size={28} />
           <h1>LocalPad</h1>
         </div>
         <div className="topbar-right">
