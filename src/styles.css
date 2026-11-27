@@ -5,7 +5,7 @@
   --muted: #6f6b64;
   --border: #e4e1da;
   --hover: #f1efe9;
-  --accent: #2f5d50;
+  --accent: #1f1e1c;
   --accent-text: #ffffff;
   --ok: #2f7a4f;
   --warn: #b7791f;
@@ -24,8 +24,8 @@
     --muted: #9b968d;
     --border: #35332f;
     --hover: #2a2926;
-    --accent: #7fb8a4;
-    --accent-text: #10201b;
+    --accent: #e9e6e0;
+    --accent-text: #1b1a18;
     --ok: #6fbf8f;
     --warn: #e0a84a;
     --danger: #e27c69;

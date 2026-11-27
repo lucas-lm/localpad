@@ -2,9 +2,9 @@
 import { deflateSync } from 'node:zlib';
 import { writeFileSync, mkdirSync } from 'node:fs';
 
-const BG = [0x2f, 0x5d, 0x50];
+const BG = [0x1f, 0x1e, 0x1c];
 const PAGE = [0xfb, 0xfa, 0xf7];
-const LINE = [0x2f, 0x5d, 0x50];
+const LINE = [0x1f, 0x1e, 0x1c];
 
 const crcTable = Array.from({ length: 256 }, (_, n) => {
   let c = n;
@@ -87,11 +87,11 @@ writeFileSync('public/icons/apple-touch-icon.png', render(180, { maskable: true 
 writeFileSync(
   'public/icons/icon.svg',
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" rx="22" fill="#2f5d50"/>
+  <rect width="100" height="100" rx="22" fill="#1f1e1c"/>
   <rect x="26" y="20" width="48" height="60" rx="5" fill="#fbfaf7"/>
-  <rect x="34" y="36" width="32" height="4.5" rx="2" fill="#2f5d50"/>
-  <rect x="34" y="48" width="32" height="4.5" rx="2" fill="#2f5d50"/>
-  <rect x="34" y="60" width="21" height="4.5" rx="2" fill="#2f5d50"/>
+  <rect x="34" y="36" width="32" height="4.5" rx="2" fill="#1f1e1c"/>
+  <rect x="34" y="48" width="32" height="4.5" rx="2" fill="#1f1e1c"/>
+  <rect x="34" y="60" width="21" height="4.5" rx="2" fill="#1f1e1c"/>
 </svg>
 `,
 );
