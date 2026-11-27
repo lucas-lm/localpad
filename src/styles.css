@@ -10,6 +10,7 @@
   --ok: #2f7a4f;
   --warn: #b7791f;
   --danger: #b3412e;
+  --danger-text: #ffffff;
   --radius: 8px;
   --mono: ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Menlo, Consolas, monospace;
   --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -29,6 +30,7 @@
   --ok: #6fbf8f;
   --warn: #e0a84a;
   --danger: #e27c69;
+  --danger-text: #1b1a18;
   color-scheme: dark;
 }
 
@@ -45,6 +47,7 @@
     --ok: #6fbf8f;
     --warn: #e0a84a;
     --danger: #e27c69;
+    --danger-text: #1b1a18;
     color-scheme: dark;
   }
 }
@@ -85,6 +88,8 @@ code { font-family: var(--mono); font-size: 0.92em; }
 .btn:disabled { opacity: 0.5; cursor: default; }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
 .btn-primary:hover:not(:disabled) { background: var(--accent); filter: brightness(1.08); }
+.btn-danger { background: var(--danger); border-color: var(--danger); color: var(--danger-text); }
+.btn-danger:hover:not(:disabled) { background: var(--danger); filter: brightness(1.08); }
 .btn-icon { width: 36px; padding: 0; border-color: transparent; background: transparent; color: var(--muted); }
 .btn-icon:hover:not(:disabled) { color: var(--danger); }
 .theme-toggle:hover:not(:disabled) { color: var(--text); }
@@ -242,6 +247,30 @@ h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; text-transform: upperca
   width: max-content;
   max-width: calc(100vw - 32px);
 }
+
+/* Confirm dialog */
+.dialog {
+  width: min(400px, calc(100vw - 32px));
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.18);
+}
+.dialog::backdrop { background: rgb(0 0 0 / 0.35); }
+.dialog-body { padding: 20px; }
+.dialog-title { margin: 0 0 8px; font-size: 17px; font-weight: 600; text-transform: none; letter-spacing: normal; color: var(--text); }
+.dialog-message { margin: 0 0 20px; font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+.dialog-message code { color: var(--text); }
+.dialog-actions { display: flex; justify-content: flex-end; gap: 8px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dialog[open] { animation: dialog-in 140ms ease-out; }
+  .dialog[open]::backdrop { animation: fade-in 140ms ease-out; }
+}
+@keyframes dialog-in { from { opacity: 0; transform: translateY(6px) scale(0.98); } }
+@keyframes fade-in { from { opacity: 0; } }
 
 @media (max-width: 560px) {
   .brand-name { display: none; }

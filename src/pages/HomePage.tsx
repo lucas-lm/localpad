@@ -6,6 +6,7 @@ import { preview, relativeTime } from '../lib/format';
 import { Link, navigate, toUrl } from '../lib/router';
 import { normalizeSlug, slugToPath } from '../lib/slug';
 import { useOnline } from '../lib/useOnline';
+import { useConfirm } from '../components/ConfirmDialog';
 import { ThemeToggle } from '../lib/theme';
 import type { Document } from '../lib/db';
 import { TrashIcon } from './EditorPage';
@@ -19,6 +20,7 @@ export function HomePage() {
   const [persisted, setPersisted] = useState<boolean | null>(null);
   const fileInput = useRef<HTMLInputElement>(null);
   const online = useOnline();
+  const [confirm, confirmDialog] = useConfirm();
 
   useEffect(() => {
     document.title = 'LocalPad';
@@ -40,7 +42,15 @@ export function HomePage() {
   };
 
   const onDelete = async (doc: Document) => {
-    if (!window.confirm(`Delete "/${doc.slug}"? This cannot be undone.`)) return;
+    const ok = await confirm({
+      title: 'Delete document?',
+      message: (
+        <>
+          <code>/{doc.slug}</code> and everything in it will be permanently deleted. This can’t be undone.
+        </>
+      ),
+    });
+    if (!ok) return;
     await deleteDocument(doc.id);
   };
 
@@ -178,6 +188,7 @@ export function HomePage() {
           <input ref={fileInput} type="file" accept="application/json,.json" onChange={onImport} hidden />
         </div>
       </section>
+      {confirmDialog}
     </div>
   );
 }
